@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# hackathon-platform
+# hackathon-platform (ongoing)
 =======
 # Hackathon Management Platform
 
@@ -17,4 +16,3 @@ Tech Stack:
 - SQLAlchemy
 - SQLite
 - HTML/CSS
->>>>>>> 460fd8a (Inital commit)
