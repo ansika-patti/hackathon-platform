@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Active Hackathons</h2>
+
+<div class="row">
+
+{% for hackathon in hackathons %}
+
+<div class="col-md-4">
+
+<div class="card shadow-sm mb-3">
+
+<div class="card-body">
+
+<h5>{{hackathon.title}}</h5>
+
+<p>{{hackathon.description}}</p>
+
+<p><strong>Prize:</strong> {{hackathon.prize}}</p>
+
+<a href="/hackathon/{{hackathon.id}}" class="btn btn-primary">View</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hackathon Banner -->
+
+<div class="card shadow mb-4">
+
+{% if hackathon.banner %}
+
+<img src="/static/uploads/{{hackathon.banner}}"
+class="card-img-top"
+style="height:300px; object-fit:cover;">
+
+{% endif %}
+
+<div class="card-body">
+
+<h2>{{hackathon.title}}</h2>
+
+<p class="text-muted">{{hackathon.description}}</p>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<!-- Hackathon Info -->
+
+<div class="col-md-8">
+
+<div class="card mb-3">
+
+<div class="card-body">
+
+<h4>About Hackathon</h4>
+
+<p>{{hackathon.description}}</p>
+
+</div>
+
+</div>
+
+
+<div class="card mb-3">
+
+<div class="card-body">
+
+<h4>Rules</h4>
+
+<ul>
+
+<li>Teams of up to 4 members</li>
+<li>All code must be written during the hackathon</li>
+<li>Use open-source libraries only</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Sidebar -->
+
+<div class="col-md-4">
+
+<div class="card mb-3">
+
+<div class="card-body text-center">
+
+<h5>Prize Pool</h5>
+
+<h3 class="text-success">{{hackathon.prize}}</h3>
+
+</div>
+
+</div>
+
+
+<div class="card mb-3">
+
+<div class="card-body text-center">
+
+<a href="/create_team/{{hackathon.id}}"
+class="btn btn-success mb-2 w-100">
+Create Team
+</a>
+
+<a href="/leaderboard"
+class="btn btn-dark w-100">
+View Leaderboard
+</a>
+
+<a href="/register_hackathon/{{hackathon.id}}"
+class="btn btn-warning mb-3">
+Register for Hackathon
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Countdown -->
+
+<div class="card mt-4">
+
+<div class="card-body">
+
+<h4>Hackathon Countdown</h4>
+
+<p id="countdown" class="text-danger fw-bold"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+const deadline = new Date("Dec 31, 2026 23:59:59").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+
+let distance = deadline - now;
+
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+document.getElementById("countdown").innerHTML =
+days + "d " + hours + "h " + minutes + "m remaining";
+
+},1000);
+
+</script>
+
+{% endblock %}

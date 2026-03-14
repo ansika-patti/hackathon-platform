@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Hackathon Leaderboard</h2>
+
+
+<!-- Winners Section -->
+
+<div class="card mb-4 shadow">
+
+<div class="card-body">
+
+<h4 class="mb-3">🏆 Top Winners</h4>
+
+<ul class="list-group">
+
+{% for s in submissions[:3] %}
+
+<li class="list-group-item">
+
+<strong>{{loop.index}}.</strong>
+
+{{s.project_title}}
+
+<span class="badge bg-success float-end">
+Score: {{s.score}}
+</span>
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+</div>
+
+
+<!-- Leaderboard Table -->
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h4 class="mb-3">All Submissions</h4>
+
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+
+<th>Rank</th>
+<th>Project</th>
+<th>Score</th>
+<th>Judge Score</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for s in submissions %}
+
+<tr>
+
+<td>{{loop.index}}</td>
+
+<td>{{s.project_title}}</td>
+
+<td>{{s.score}}</td>
+
+<td>
+
+<form method="POST" action="/score/{{s.id}}">
+
+<input type="number"
+name="score"
+class="form-control mb-1"
+placeholder="Enter score">
+
+<button class="btn btn-success btn-sm w-100">
+Submit Score
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

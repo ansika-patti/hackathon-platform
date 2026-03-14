@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h2 class="mb-4">Create Hackathon</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Hackathon Title</label>
+<input name="title" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Prize Pool</label>
+<input name="prize" class="form-control" placeholder="₹50,000">
+</div>
+
+</div>
+
+
+<div class="mb-3">
+<label>Description</label>
+<textarea name="description" class="form-control" rows="4"></textarea>
+</div>
+
+
+<div class="mb-3">
+<label>Hackathon Banner</label>
+<input type="file" name="banner" class="form-control">
+</div>
+
+
+<button class="btn btn-success">
+Create Hackathon
+</button>
+
+<a href="/dashboard" class="btn btn-secondary">
+Cancel
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
